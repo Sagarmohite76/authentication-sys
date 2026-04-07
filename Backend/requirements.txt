@@ -5,14 +5,7 @@ aiofiles==23.2.1
 # Database
 sqlalchemy==2.0.30
 pymysql==1.1.0
-alembic==1.13.1
 
-# Data & ML
-numpy==1.26.4
-pandas==2.2.2
-
-# Model Saving
-joblib==1.4.2
 
 # Validation
 pydantic==2.7.4
@@ -25,9 +18,3 @@ cryptography==42.0.8
 
 # Environment
 python-dotenv==1.0.1
-
-# Utils
-requests==2.32.3
-
-# Optional (for testing & dev)
-pytest==8.2.2
