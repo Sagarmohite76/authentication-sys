@@ -5,10 +5,7 @@ services:
     env: python
     # No rootDir — build runs from repo root
     buildCommand: >
-      python --version &&
-      pip install --upgrade pip &&
-      pip install -r Backend/requirements.txt &&
-      cd Frontend && npm install && npm run build
+      cd Frontend && npm install && npm run build && cd .. && pip install -r Backend/requirements.txt
     startCommand: "cd Backend/app && uvicorn main:app --host 0.0.0.0 --port $PORT --workers 1"
     plan: free
     envVars:
