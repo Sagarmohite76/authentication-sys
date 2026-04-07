@@ -1,5 +1,5 @@
 services:
-  # Backend FastAPI Service
+  # ── Backend (FastAPI) ──────────────────────────────────────────
   - type: web
     name: Backend
     env: python
@@ -9,22 +9,38 @@ services:
     plan: free
     envVars:
       - key: PYTHON_VERSION
-        value: 3.10.x
-      # To be filled in the Render dashboard
+        value: "3.10.14"
+      # ── Set these in the Render dashboard ──
       - key: FRONTEND_URL
-        value: "" 
+        sync: false          # fill manually in Render dashboard
+      - key: DB_Host
+        sync: false
+      - key: DB_User
+        sync: false
+      - key: DB_Password
+        sync: false
+      - key: DB_Name
+        sync: false
+      - key: Sender_Email
+        sync: false
+      - key: App_Password
+        sync: false
 
-  # Frontend Vite Static Site
+  # ── Frontend (Vite/React Static Site) ─────────────────────────
   - type: web
     name: Frontend
     env: static
     rootDir: Frontend
     buildCommand: "npm install && npm run build"
     staticPublishPath: "./dist"
+    routes:
+      # Redirect all routes to index.html for React Router SPA
+      - type: rewrite
+        source: /*
+        destination: /index.html
     envVars:
-      # Render allows binding the backend service URL automatically
       - key: VITE_API_URL
         fromService:
           name: Backend
           type: web
-          property: host
+          property: url          # full https:// URL, not just hostname

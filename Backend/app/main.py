@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from db import engine
@@ -5,12 +6,7 @@ from models import Base
 import db.base
 from api.endpoints import users
 
-app=FastAPI()
-
-
 app = FastAPI()
-
-import os
 
 origins = [
     "http://localhost:8000",
@@ -30,7 +26,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 Base.metadata.create_all(bind=engine)
 app.include_router(users.router)
