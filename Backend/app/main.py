@@ -1,9 +1,9 @@
-
+import os
 from pathlib import Path
-from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
+from fastapi import FastAPI
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from db import engine
 from models import Base
 import db.base
@@ -11,9 +11,6 @@ from api.endpoints import users
 
 app = FastAPI()
 
-import os
-
-# ── CORS (kept for local dev; not needed in production since same origin) ──
 origins = [
     "http://localhost:8000",
     "http://localhost:5173",
