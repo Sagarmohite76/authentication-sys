@@ -1,0 +1,59 @@
+# ========================
+# Python / FastAPI Backend
+# ========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+*.env
+.env
+.env.*
+!.env.example
+
+# Database
+*.db
+*.sqlite3
+
+# ML / Model files (usually large — add back if needed)
+*.pkl
+*.joblib
+*.bin
+*.h5
+
+# Alembic
+Backend/alembic.ini.bak
+
+# ========================
+# Node / Vite Frontend
+# ========================
+Frontend/node_modules/
+Frontend/dist/
+Frontend/.env
+Frontend/.env.*
+!Frontend/.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vite cache
+Frontend/.vite/
+
+# ========================
+# OS / Editor
+# ========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo

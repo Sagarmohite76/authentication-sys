@@ -1,0 +1,30 @@
+services:
+  # Backend FastAPI Service
+  - type: web
+    name: Backend
+    env: python
+    rootDir: Backend
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "cd app && uvicorn main:app --host 0.0.0.0 --port $PORT --workers 1"
+    plan: free
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.x
+      # To be filled in the Render dashboard
+      - key: FRONTEND_URL
+        value: "" 
+
+  # Frontend Vite Static Site
+  - type: web
+    name: Frontend
+    env: static
+    rootDir: Frontend
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: "./dist"
+    envVars:
+      # Render allows binding the backend service URL automatically
+      - key: VITE_API_URL
+        fromService:
+          name: Backend
+          type: web
+          property: host
