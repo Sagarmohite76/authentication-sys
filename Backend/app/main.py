@@ -1,4 +1,4 @@
-import os
+
 from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -10,6 +10,8 @@ import db.base
 from api.endpoints import users
 
 app = FastAPI()
+
+import os
 
 # ── CORS (kept for local dev; not needed in production since same origin) ──
 origins = [
